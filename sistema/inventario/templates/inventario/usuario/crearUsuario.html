@@ -1,0 +1,115 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+
+<article class="content forms-page">
+	    <div class="title-block">
+          <h3 class="title">Crear nuevo usuario</h3>
+          <p class="title-description">Agregue un nuevo usuario al sistema</p>
+        </div>
+
+
+
+<section class="section">
+   	<div class="row sameheight-container">
+			<div class="col-xl-12">
+
+				
+				{% if messages %}
+                 {% for message in messages %}
+                 {% if message.level == 40 %}
+
+		 <div class="card card-warning">
+            <div class="card-header"> 
+            	<div class="header-block">
+            		<em class="fa fa-warning"></em>
+            		<p class="title">{{ message }}</p>
+                   </div>
+                </div>
+         </div>
+
+                 {% else %}
+		 <div class="card card-primary">
+            <div class="card-header"> 
+            	<div class="header-block">
+            		<em class="fa fa-check"></em>
+            		<p class="title">{{ message }}</p>
+                   </div>
+                </div>
+         </div>
+         		{% endif %}
+         		{%endfor%}
+				{%endif%}
+
+
+
+		<div class="card card-block sameheight-item">
+			<form role="form" method="POST" onsubmit="return validarTodo('usuario')">
+			{% csrf_token %}
+				<div class="form-group">
+				<label for="{{ form.username.name }}">
+				{{form.username.label}}
+				</label>
+				{{form.username}}
+
+				</div>	
+
+				<div class="form-group">
+				<label for="{{ form.first_name.name }}">
+				{{form.first_name.label}}
+				</label>
+				{{form.first_name}}
+				</div>
+
+				<div class="form-group">
+				<label for="{{ form.last_name.name }}">
+				{{form.last_name.label}}
+				</label>
+				{{form.last_name}}
+				</div>
+
+				<div class="form-group">
+				<label for="{{ form.email.name }}">
+				{{form.email.label}}
+				</label>
+				{{form.email}}
+				</div>
+
+				<div class="form-group">
+				<label for="{{ form.level.name }}">
+				{{form.level.label}}
+				</label>
+				{{form.level}}
+				</div>
+
+				<div class="form-group">
+				<label for="{{ form.password.name }}">
+				{{form.password.label}}
+				</label>
+				{{form.password}}
+				</div>
+
+				<div class="form-group">
+				<label for="{{ form.rep_password.name }}">
+				{{form.rep_password.label}}
+				</label>
+				{{form.rep_password}}
+				</div>
+
+				<div class="form-group">
+            	<button type="submit" class="btn btn-primary">Ingresar</button>
+        		</div>
+
+			</form>
+			</div>
+        </div>
+        <!-- FIN DE EDITAR PERFIL -->
+
+
+</div>
+
+</section>
+
+</article>
+
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+<script>
+let numeroAdministradores = '{{ administradores }}'
+let numeroUsuarios = '{{ usuarios }}'
+
+</script>
+                <article class="content dashboard-page">
+                    <section class="section">
+                        <div class="row sameheight-container">
+                            <!-- MENSAJES DE ERROR O EXITO -->
+{% if messages %}
+    {% for message in messages %}
+        {% if message.level == 40 %}
+
+         <div class="col-xl-12">
+         <div class="card card-warning">
+            <div class="card-header"> 
+                <div class="header-block">
+                    <em class="fa fa-warning"></em>
+                    <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div>
+     </div>
+
+        {% else %}      
+
+         <div class="col-xl-12">
+         <div class="card card-primary">
+            <div class="card-header"> 
+                <div class="header-block">
+                    <em class="fa fa-check"></em>
+                    <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div> 
+         </div>             
+
+         {% endif %}
+    {%endfor%}
+{%endif%}
+<!-- FIN DE MENSAJES DE ERROR O EXITO  -->
+
+
+                            <div class="col col-12 col-sm-12 col-md-12 col-xl-12 stats-col">
+                                <div class="card sameheight-item stats" data-exclude="xs">
+                                    <div class="card-block">
+                                        <div class="title-block">
+                                            <h4 class="title">Estadisticas</h4>
+                                            <p class="title-description">
+                                                {{ fecha }}
+                                            </p>
+                                        </div>
+                                        <div class="row row-sm stats-container">
+                                            <div class="col-12 col-sm-6 stat-col">
+                                                <div class="stat-icon">
+                                                    <i class="fa fa-rocket"></i>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="value">{{ productosRegistrados }}</div>
+                                                    <div class="name">Productos registrados</div>
+                                                </div>
+                                                <div class="progress stat-progress">
+                                                    <div class="progress-bar" style="width: 100%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 stat-col">
+                                                <div class="stat-icon">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="value">{{ productosVendidos }}</div>
+                                                    <div class="name">Productos vendidos</div>
+                                                </div>
+                                                <div class="progress stat-progress">
+                                                    <div class="progress-bar" style="width: 100%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6  stat-col">
+                                                <div class="stat-icon">
+                                                    <i class="fa fa-line-chart"></i>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="value">{{ clientesRegistrados }}</div>
+                                                    <div class="name">Clientes registrados</div>
+                                                </div>
+                                                <div class="progress stat-progress">
+                                                    <div class="progress-bar" style="width: 100%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6  stat-col">
+                                                <div class="stat-icon">
+                                                    <i class="fa fa-users"></i>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="value">{{ usuariosRegistrados }}</div>
+                                                    <div class="name">Numero de usuarios</div>
+                                                </div>
+                                                <div class="progress stat-progress">
+                                                    <div class="progress-bar" style="width: 100%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6  stat-col">
+                                                <div class="stat-icon">
+                                                    <i class="fa fa-list-alt"></i>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="value">{{ facturasEmitidas }}</div>
+                                                    <div class="name">Facturas emitidas</div>
+                                                </div>
+                                                <div class="progress stat-progress">
+                                                    <div class="progress-bar" style="width: 100%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 stat-col">
+                                                <div class="stat-icon">
+                                                    <i class="fa fa-dollar"></i>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="value"> Bs.{{ ingresoTotal }} </div>
+                                                    <div class="name">Ingreso total</div>
+                                                </div>
+                                                <div class="progress stat-progress">
+                                                    <div class="progress-bar" style="width: 100%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+            
+                <section class="section">
+                        <div class="row sameheight-container">
+                        <!-- PON LA LISTA AQUI -->
+                            <div class="col-xl-12">
+                                <div class="card sameheight-item sales-breakdown" data-exclude="xs,sm,lg">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <h3 class="title">Division de usuarios</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <div class="dashboard-sales-breakdown-chart" id="dashboard-sales-breakdown-chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </article>
+                {% endblock %}

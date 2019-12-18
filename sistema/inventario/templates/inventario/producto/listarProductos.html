@@ -1,0 +1,106 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+
+
+<!-- NO MODIFICAR ---------------------------------->
+{% load static %}
+<script src='{% static "inventario/js/eliminarEntradas.js" %}'></script>
+<!-- FIN DE JAVASCRIPT ------------------------------------>
+
+
+
+                <article class="content responsive-tables-page">
+                    <div class="title-block">
+                        <h1 class="title"> Listar productos </h1>
+                        <p class="title-description"> Verifique los productos agregados </p>
+                    </div>
+                    <section class="section">
+                        <div class="row">
+                            <div class="col-md-12">
+                            {% if messages %}
+                            {% for message in messages %}
+         <div class="card card-primary">
+            <div class="card-header"> 
+                <div class="header-block">
+                    <em class="fa fa-check"></em>
+                        <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div>
+         {% endfor %}
+        {%endif%}
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="card-title-block">
+                                            <h3 class="title">Productos</h3>
+                                        </div>
+                                        <section class="example">
+                                            <div class="table-responsive">
+                                                <table id="example2" class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Item</th>
+                                                            <th>Nombre</th>
+                                                            <th>Precio</th>
+                                                            <th>Disponible</th>
+                                                            <th>Categoria</th>
+                                                            <th>IVA</th>
+                                                            <th>Opciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    	{% for fila in tabla %}
+                                                        <tr>
+                                                            <td>{{ fila.id}}</td>
+                                                            <td>{{ fila.descripcion }}</td>
+                                                            <td>{{ fila.precio }}</td>
+                                                            <td>{{ fila.disponible }}</td>
+                                                            <td>
+                                                    {% if fila.categoria == '1' %}
+                                                            Unidad
+                                                    {% elif fila.categoria == '2' %}
+                                                            Kilo
+                                                    {% elif fila.categoria == '3' %}
+                                                            Litro
+                                                    {% elif fila.categoria == '4' %}
+                                                            Otros
+                                                        {%endif%}
+
+                                                            </td>
+                                                            <td>
+                                                                {% if fila.tiene_iva == True %}
+                                                                Si
+                                                                {%endif%}
+
+                                                                {% if fila.tiene_iva == False %}
+                                                                No
+                                                                {% endif %}
+                                                            </td>
+                                                            <td>
+
+                                                <div class="btn-group">
+                                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></button>
+                                                <!-- <span class="sr-only">Abrir menu</span> -->
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="/inventario/editarProducto/{{ fila.id}}">Editar/Ver producto</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" onclick="eliminarEntrada( {{fila.id}},'producto' )">Eliminar producto</a>
+                                                    </div>
+                                                     </div>
+                                                            </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </article>
+{% endblock %}
+

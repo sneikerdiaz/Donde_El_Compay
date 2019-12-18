@@ -1,0 +1,169 @@
+{% extends "inventario/manual/comun/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+            <div id="contenido" class="abrir">
+                <header class="header" id="poo-header">
+                    <h1 class="style">Factura</h1>
+                </header>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'poo-1')" id="defaultOpen">Ingresar una factura</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-2')">Ver las facturas</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-3')">Detalles de las facturas</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-4')">Imprimir reportes</button>
+                </div>
+
+                <div id="poo-1" class="tabcontent">
+                    <article>
+                        <h3>¿Como ingresar una factura?</h3><br>
+                        <p>Ingresar una factura implica el mismo procedimiento que se hace al <a href="/inventario/verManualDeUsuario/pedido">ingresar un pedido</a>.</p>
+                        <br>
+                        <p>Sin embargo, debido a ciertas diferencias, se explicara el proceso nuevamente</p>
+
+                        <br>
+
+                        <p>El proceso de ingreso de facturas se divide en dos partes.</p>
+
+                        <br>
+
+                        <p><b><h2>Primera parte / Numero de productos y cliente:</h2></b></p>
+                        <br>
+                        <img src="{% static 'inventario/assets/manual/factura/ingresar.png' %}" alt="telefono" style="width:100%;height:100%;">
+
+                        <br>
+
+                        <p><b>1)Numero de productos:</b> Es el numero de productos que se van a emitir (No confundir con las existencias o unidades de los mismos).</p>
+
+                        <br>
+
+                        <p><b>2)Cliente:</b> Es una lista de los clientes ya registrados en la base de datos, se puede escoger solo uno por factura.</p>
+
+                        <br>
+
+                        <p><b>3)Boton de ingresar:</b> Envia la peticion al sistema para pasar a la siguiente parte con los datos actuales</p>
+
+                        <br>
+
+                        <p><b><h2>Segunda parte / Detalles de la factura:</h2></b></p>
+                        <br>
+                        <img src="{% static 'inventario/assets/manual/factura/ingresar2.png' %}" alt="telefono" style="width:100%;height:100%;">
+
+
+                        <br>
+
+                        <p><b>1)Descripcion:</b> Se tiene que escoger la descripcion o nombre del producto de una lista que sale en orden alfabetico, es obligatorio.</p>
+
+                        <br>
+
+                        <p><b>2)Precio del producto:</b> Es un campo no modificable que cambia automaticamente al colocar una descripcion o nombre en el campo de arriba.</p>
+
+
+                        <br>
+
+                        <p><b>3)Cantidad a facturar:</b>Se debe colocar un numero positivo, sin decimales. Tambien se pueden usar las teclas direccionales para incrementar o decrementar la cantidad. Cada numero sumado a esta cantidad reducira el de stock disponible, y viceversa</p>
+
+                        <br>
+
+                        <p><b>4)Stock disponible:</b>Muestra el numero de existencias disponibles del producto en cuestion, su valor cambia en conjunto con el campo de cantidad.</p>
+
+                        <img src="{% static 'inventario/assets/manual/factura/ingresar2-1.png' %}" alt="telefono" style="width:100%;height:100%;">       
+                        
+                        <br>
+
+                        <p>En la imagen de arriba se puede apreciar que al pedir una unidad en el campo de 'Cantidad a facturar' la misma cantidad se descuenta al campo de 'Stock disponible'</p>                 
+
+                        <br>
+                        <br>
+
+                        <p><b>5)Sub-total:</b>Es un campo no modificable que muestra el subtotal obtenido por el precio del producto por la cantidad que se vendera del mismo (que se obtiene del campo de arriba).</p>
+
+                        <br>
+
+                        <p>En el ejemplo de la imagen se va a vender un solo producto, por lo tanto solo se ve un formulario, de haber, por ejemplo, 3 productos, se verian 3 formularios (uno para cada producto).</p>
+
+                        <br>
+
+                        <p>Despues de oprimir el boton de 'Ingresar' se procesara la factura y enviara un mensaje de exito si no ha habido ningun error, si se ha cometido alguno enviara una notificacion.</p>
+
+
+                       
+                    </article>
+                </div>
+
+                <div id="poo-2" class="tabcontent">
+                    <article>
+                        <h3>¿Cómo ver las facturas?</h3><br>
+                        <img src="{% static 'inventario/assets/manual/factura/listar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <br>
+                        <p>La interfaz para ver las facturas funciona de la misma forma que las de <a href="/inventario/verManualDeUsuario/producto">productos</a> y <a href="/inventario/verManualDeUsuario/proveedor">proveedores</a>.</p>
+                        <p>Por lo tanto, vea alguno de esos dos modulos para mas informacion</p>
+
+                        <br>
+                        <p>Lo que si cambia, sin embargo, son las opciones en el boton de opciones:</p>
+                        
+                        <img src="{% static 'inventario/assets/manual/factura/listar-opciones.png' %}" alt="telefono" style="width:20%;height:20%;">
+                        <p>
+                        Este es el boton de opciones despues de darle click, se puede ver una lista emergente con dos sub opciones, Editar/Ver factura y Eliminar factura, de los cuales se hablara despues.
+                        </p>
+
+                        <br>
+                        <p>En <b>'Ver factura' </b>
+                        se accede a los detalles de la factura cuya fila corresponda el boton.</p>
+                        <br>
+
+                        <p>En <b>'Generar reporte(CSV)'</b> y <b>'Generar reporte(PDF)'</b> se pueden crear reportes de cada fila correspondiente al boton, en formato de hoja de calculo o PDF, respectivamente.</p>
+
+
+
+                    </article>
+                </div>
+
+                <div id="poo-3" class="tabcontent">
+                    <article>
+                        <h3>Que son los detalles de las facturas?</h3><br>
+
+                        <br>
+                        <img src="{% static 'inventario/assets/manual/factura/detalles.png' %}" alt="telefono" style="width:100%;height:100%;">
+                            <br>
+                            <br><p>Los detalles de las facturas son aquellos datos de cada factura, su identificador, los productos involucrados, el monto general, entre otros. Desde aqui se pueden ver todos esos datos.</p>
+                            <br>
+                            <p>Ademas, cuenta con un dos botones:</p>
+                            
+                            <p><b>Volver a facturas:</b> El cual nos devuelve a la lista anterior.</p>
+                            <br>
+                            <p><b>Boton de generar PDF:</b> Genera un PDF de la factura actual.</p>
+                        
+
+                        </article>
+                </div>
+
+                <div id="poo-4" class="tabcontent">
+                    <article>
+
+                        <h3>Imprimir reportes</h3><br>
+        <img src="{% static 'inventario/assets/manual/factura/descargar.png' %}" alt="telefono" style="width:50%;height:50%;">
+        <br>
+        <br>
+                        <p>Suponiendo que se le haya dado en la opcion de generar PDF o generar CSV, se mostrara una ventana indicando que quiere hacer con el archivo (imagen de arriba), el idioma de la misma dependera del idioma de su sistema operativo.
+                        </p>
+
+                        <p>El archivo, en caso de ser un PDF, deberia verse asi:
+                        </p>
+
+                        <br>
+        <img src="{% static 'inventario/assets/manual/factura/elpdf.png' %}" alt="telefono" style="width:80%;height:80%;">
+                        <br>
+                        <br>
+                        <p>Si se ha descargado en formato de CSV, la apariencia del mismo variara de acuerdo al programa usado para abrirlo, por ejemplo, Calc o Excel.</p>
+
+                        <br>
+
+                        <br>
+                    </article>
+                </div>
+                {% include 'inventario/manual/comun/footer_incluido.html' %}
+            </div>
+
+             {% endblock %}

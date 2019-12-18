@@ -1,0 +1,92 @@
+{% extends "inventario/manual/comun/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+            <div id="contenido" class="abrir">
+                <header class="header" id="poo-header">
+                    <h1 class="style">Inicio</h1>
+                </header>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'poo-1')" id="defaultOpen">Panel</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-2')">Como empezar</button>
+                </div>
+
+                <div id="poo-1" class="tabcontent">
+                    <article>
+                        <h3>El panel de administrador</h3><br>
+                        <img src="{% static 'inventario/assets/manual/inicio/panel1.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <i style="text-align: center">Foto-Primera parte</i>
+                        <img src="{% static 'inventario/assets/manual/inicio/panel2.png' %}" alt="telefono" style="width:100%;height:100%;"><i style="text-align: center">Foto-Segunda parte</i>
+                        <br>
+                        <br>
+                        <br>
+                        <p>Es lo primero que vera el usuario despues de iniciar sesion es el panel de administrador.</p>
+
+                        <br>
+
+                        <p>En esta pantalla se pueden ver datos rapidos y genericos que muestran un resumen del estado del sistema hasta el momento, tales como:</p>
+
+                        <br>
+
+                        <p><b>**Productos registrados:</b> Es, como su nombre, indica, el numero de productos registrados en el sistema hasta los momentos.</p>
+
+                        <br>
+
+                        <p><b>**Productos vendidos:</b> Indica todas las unidades vendidas hasta la fecha.</p>
+
+                        <br>
+
+                        <p><b>**Clientes registrados:</b> Muestra la cantidad de clientes registrados en el sistema.</p>
+
+
+                        <br>
+
+                        <p><b>**Numero de usuarios:</b> Señala el numero de usuarios (indistintamente de su nivel) que estan registrados en el sistema.</p>
+
+                        <br>
+
+                        <p><b>**Facturas emitidas:</b> Muestra la cantidad de facturas realizadas hasta los momentos.</p>
+
+                        <br>
+
+                        <p><b>**Ingreso total:</b> Enseña la sumatoria total de todas las ganancias hasta la fecha.</p>
+
+                        <p><b>**Division de usuarios:</b> Muestra los grupos de usuarios y la cantidad de miembros que pertenecen a cada uno de los grupos.</p>
+                       
+                    </article>
+                </div>
+
+                <div id="poo-2" class="tabcontent">
+                    <article>
+                        <h3>¿Cómo empezar a usar el sistema?</h3><br>
+                        
+                        <p>Este sistema de inventario permite el manejo, facturacion y reeabastecimiento digital del inventario.No obstante, para usarlo por primera vez de manera exitosa se necesitan de ciertos pasos.</p>
+                        <br>
+                        <p><b>1)Añadir productos:</b>
+                        Primero se necesitan <a href="/inventario/verManualDeUsuario/producto">agregar los productos</a> con los que cuenta el negocio o empresa.
+                        </p>
+                        <br>
+                        <p><b>2)Agregar proveedor:</b>
+                        Luego se procede a <a href="/inventario/verManualDeUsuario/proveedor">añadir uno o mas proveedores</a>, ya que son ellos los que aumentan el stock de los productos.</p>
+                        <br>
+                        <p><b>3)Ingresar un pedido:</b>
+                        Despues se debe <a href="/inventario/verManualDeUsuario/pedido">hacer un pedido</a> a uno de los proveedores recientemente creados, de esa forma, obtendremos existencias nuevas en los productos.</p>
+                        <br>
+                        <p><b>4)Agregar cliente:</b>
+                        Ahora se tiene que <a href="/inventario/verManualDeUsuario/clientes">agregar un cliente nuevo</a> al sistema, el cliente sera el que compre nuestras existencias y se le facturara la compra.</p>
+                        <br>
+                        <p><b>5)Crear factura:</b>
+                        Por ultimo solo se necesita <a href="/inventario/verManualDeUsuario/factura">crear una factura</a>, para eso elegimos al cliente, el numero de productos que deseamos facturar y la cantidad de cada uno.</p>
+
+                        <p><b>Eso es todo!</b></p>
+
+
+                    </article>
+                </div>
+
+                {% include 'inventario/manual/comun/footer_incluido.html' %}
+            </div>
+
+             {% endblock %}

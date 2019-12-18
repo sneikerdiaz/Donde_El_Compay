@@ -1,0 +1,35 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <link type="text/css" rel="stylesheet" href="{% static 'inventario/css/manual.css' %}">
+        <title>Programación Orientada a Objetos</title>
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <img src="{% static 'inventario/assets/manual/iconos/btn-menu.png' %}" class="btn-menu" onclick="abrir()">
+            </header>
+            <div class="menu-lateral">
+                <h2>MENÚ</h2>
+                <ul>
+                    <li><a href="/inventario/panel">Volver al panel de administracion</a></li>
+                    <li><a href="/inventario/verManualDeUsuario/inicio">Inicio</a></li>
+                    <li><a href="/inventario/verManualDeUsuario/producto">Producto</a></li>
+                    <li><a href="/inventario/verManualDeUsuario/proveedor">Proveedor</a></li>
+                    <li><a href="/inventario/verManualDeUsuario/pedido">Pedido</a></li>
+                    <li><a href="/inventario/verManualDeUsuario/clientes">Clientes</a></li>
+                    <li><a href="/inventario/verManualDeUsuario/factura">Factura</a></li>
+                    <li><a href="/inventario/verManualDeUsuario/usuarios">Usuarios</a></li>
+                    <li><a href="/inventario/verManualDeUsuario/opciones">Opciones</a></li>
+                </ul>
+            </div>
+                {% block content %}
+                {% endblock %}
+        </div>
+        <script src="{% static 'inventario/js/manual.js' %}""></script>
+    </body>
+</html>

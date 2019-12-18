@@ -1,0 +1,127 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+<article class="content forms-page">
+	    <div class="title-block">
+          <h3 class="title">Factura numero #{{ factura.id }}</h3>
+          <p class="title-description">Datos de la factura seleccionada</p>
+        </div>
+<section class="section">
+    <div class="row">
+
+        <div class="col-md-12">
+        <a href="/inventario/listarFacturas" class="btn btn-info btn-lg">
+            <em class="fa fa-angle-left"></em>
+        Volver a facturas
+        </a>
+        </div>
+                        
+                        <div class="col-xl-4">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title">Cedula del cliente/comprador</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <p>{{factura.cliente.cedula}}</p>
+                                    </div>                                  
+                                </div>
+                            </div>
+
+						<div class="col-xl-4">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title">Fecha de creacion de la factura</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <p>{{factura.fecha}}</p>
+                                    </div>                                  
+                                </div>
+                         </div>
+
+						<div class="col-xl-4">                       
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title">Monto Sub-total de la factura</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <p>{{factura.sub_monto}}</p>
+                                    </div>                                  
+                                </div>
+                      	</div>
+
+
+						<div class="col-xl-4">                           
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title">Monto total de la factura</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <p>{{factura.monto_general}}</p>
+                                    </div>                                  
+                                </div>
+                      	</div>
+
+						<div class="col-xl-4">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title">IVA utilizado</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <p>{{factura.iva.valor_iva}}%</p>
+                                    </div>                                  
+                                </div>
+                        </div>
+
+
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="card-title-block">
+                                            <h3 class="title">Especificaciones de la factura</h3>
+                                        </div>
+                                        <section class="example">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Producto</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Sub-total</th>
+                                                            <th>Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    	{% for producto in detalles %}
+                                                        <tr>
+                                                            <td>{{ producto.id_producto.descripcion }}</td>
+                                                            <td>{{ producto.cantidad }}</td>
+                                                            <td>{{ producto.sub_total }}</td>
+                                                            <td>{{ producto.total }}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                                    <tfooter>
+                                                    	Total: {{ factura.monto_general }}
+                                                    </tfooter>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                                <a href="/inventario/generarFacturaPDF/{{ factura.id}}" class="btn btn-secondary btn-lg"><em class="fa fa-print"></em>Generar PDF</a>
+                            </div>
+
+	</div>
+</section>
+</article>
+{% endblock %}

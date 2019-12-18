@@ -1,0 +1,79 @@
+{% extends "inventario/manual/comun/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+            <div id="contenido" class="abrir">
+                <header class="header" id="poo-header">
+                    <h1 class="style">Opciones</h1>
+                </header>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'poo-1')" id="defaultOpen">¿Que es el modulo de opciones?</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-2')">¿Operaciones con la base de datos?</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-3')">Configuracion general</button>
+                </div>
+
+                <div id="poo-1" class="tabcontent">
+                    <article>
+                        <h3>¿Que es el modulo de opciones?</h3><br>
+                        
+                        <p>El modulo de opciones permite cambiar la configuracion global del sistema, tales como el nombre del negocio, el logo, el mensaje personal y el iva a utilizar en las facturas y pedidos.</p>
+
+                        <br>
+
+                        <p>Solo el administrador puede acceder a este modulo, a su vez se puede descargar un respaldo de la base de datos e incluso recuperar la base de datos importando el archivo de respaldo descargado.</p>
+                       
+                    </article>
+                </div>
+
+                <div id="poo-2" class="tabcontent">
+                    <article>
+                        <h3>¿Cómo descargar la base de datos?</h3><br>
+                        <img src="{% static 'inventario/assets/manual/opciones/panel.png' %}" alt="telefono" style="width:20%;height:20%;">
+                        <p>En la imagen se pueden ver 3 opciones, <b>Importar base de datos</b>,<b>Descargar base de datos</b> y <b>Configuracion general</b>.</p>
+                        <br>
+                        <p>
+                        Al escoger 'descargar base de datos' se descargara un archivo en formato XML con los datos actuales de la base de datos.</p>
+                        
+                        <br>
+                        <br>
+                        <h3>¿Cómo importar la base de datos?</h3><br>
+                        <img src="{% static 'inventario/assets/manual/opciones/importar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <p>
+                        En el siguiente formulario solo se tiene que escoger un archivo en formato XML que contenga la base de datos y luego, solo darle al boton de 'Ingresar'
+                        </p>
+
+                        <p>
+                        Si se ha descargado antes un respaldo, este se podria usar para importar la base de datos que habia hasta ese punto, de usarse un archivo que este corrupto o sea invalido, se mostrara un mensaje de error.
+                        </p>
+
+
+
+                    </article>
+                </div>
+
+                <div id="poo-3" class="tabcontent">
+                    <article>
+                        <h3>Configuracion general</h3><br>
+
+                        <img src="{% static 'inventario/assets/manual/opciones/configuracion.png' %}" alt="telefono" style="width:100%;height:100%;">
+                            <br><p>En la imagen se ven reflejado los campos del formulario, los campos son claros y autoexplicativos.</p>
+                            <br>
+                            <p>Una vez realizado los cambios deseados, solo se debe dar en 'Ingresar'.
+                            </p>
+                            <br>
+                            <p> Solo el administrador puede acceder a este modulo. </p>
+
+                            <br>
+
+                    </article>
+                </div>
+
+
+                {% include 'inventario/manual/comun/footer_incluido.html' %}
+
+
+            </div>
+
+             {% endblock %}

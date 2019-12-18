@@ -1,0 +1,114 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+
+<article class="content forms-page">
+	    <div class="title-block">
+          <h3 class="title">Ver Perfil de '{{perfil.username}}'</h3>
+          <p class="title-description">Observe los datos actuales de este perfil o use los otros modulos de abajo</p> 
+          <a href="/inventario/perfil/editar/{{ perfil.id }}" class="btn btn-lg btn-info"> <em class="fa fa-pencil"></em> Editar perfil </a>
+
+          <a href="/inventario/perfil/clave/{{ perfil.id }}" class="btn btn-lg btn-info"> <em class="fa fa-pencil"></em> Cambiar clave </a>        
+        </div>
+
+<section class="section">
+   	<div class="row sameheight-container">
+
+<!-- MENSAJES DE ERROR O EXITO -->
+{% if messages %}
+    {% for message in messages %}
+        {% if message.level == 40 %}
+
+         <div class="col-xl-12">
+		 <div class="card card-warning">
+            <div class="card-header"> 
+            	<div class="header-block">
+            		<em class="fa fa-warning"></em>
+            		<p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div>
+     </div>
+
+        {% else %} 		
+
+         <div class="col-xl-12">
+		 <div class="card card-primary">
+            <div class="card-header"> 
+            	<div class="header-block">
+            		<em class="fa fa-check"></em>
+            		<p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div> 
+         </div>       		
+
+         {% endif %}
+    {%endfor%}
+{%endif%}
+<!-- FIN DE MENSAJES DE ERROR O EXITO  -->
+
+
+						<div class="col-xl-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title">Nombre de usuario</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <p>{{perfil.username}}</p>
+                                    </div>                                  
+                                </div>
+                            </div>
+
+						<div class="col-xl-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title">Nombre completo</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <p>{{perfil.first_name}} {{perfil.last_name}}</p>
+                                    </div>                                  
+                                </div>
+                         </div>
+
+						<div class="col-xl-12">                       
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title">Correo electronico</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <p>{{perfil.email}}</p>
+                                    </div>                                  
+                                </div>
+                      	</div>
+
+
+            <div class="col-xl-12">                       
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title">Nivel de acceso</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                      {% if perfil.is_superuser %}
+                                        <p>Administrador</p>
+                                      {% else %}
+                                        <p>Usuario</p>
+                                      {% endif %}
+                                    </div>                                  
+                                </div>
+                        </div>
+
+		
+				</div>
+	</section>
+</article>
+
+{% endblock %}        

@@ -1,0 +1,31 @@
+{% load static %}
+        <script src='{% static "inventario/js/alertify.js" %}'></script>
+        <script src='{% static "inventario/js/vendor.js" %}'></script>
+        <script src='{% static "inventario/js/app.js" %}'></script>
+
+        <script src='{% static "inventario/js/plugins/jQueryUI/jquery-ui.js" %}'></script>
+
+
+		    <script src='{% static "inventario/js/bower_components/datatables.net/js/jquery.dataTables.js" %}'></script>
+
+		    <script src='{% static "inventario/js/bower_components/datatables.net-bs/js/dataTables.bootstrap4.js" %}'></script>
+
+		  <script>
+			
+	$(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false,
+      //"scrollY"     : 0,
+      "scrollCollapse": false      
+
+    })
+  })
+
+
+		  </script>

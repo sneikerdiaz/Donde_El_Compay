@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+    <object model="inventario.usuario" pk="1">
+        <field name="last_login" type="DateTimeField">2019-08-27T18:42:02.437050+00:00</KGvOajQ8O+g=</field>
+        <field name="email" type="CharField">jinwolf@sobrevalorado.com</field>
+        <field name="first_name" type="CharField">Moises</field>
+        <field name="last_name" type="CharField">Sanchez</field>
+        <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+        <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+    </object>
+    <object model="inventario.opciones" pk="1">
+        <field name="moneda" type="CharField">bs</field>
+        <field name="valor_iva" type="IntegerField">16</field>
+        <field name="nombre_negocio" type="CharField"><None></None></field>
+        <field name="mensaje_factura" type="TextField"><None></None></field>
+    </object>
+    <object model="inventario.producto" pk="2">
+        <field name="descripcion" type="CharField">Cafe con fe</field>
+        <field name="precio" type="DecimalField">7.00</field>
+        <field name="disponible" type="IntegerField">8</field>
+        <field name="categoria" type="CharField">4</field>
+        <field name="tiene_iva" type="BooleanField">True</field>
+    </object>
+    <object model="inventario.producto" pk="3">
+        <field name="descripcion" type="CharField">Fororo</field>
+        <field name="precio" type="DecimalField">17.00</field>
+        <field name="disponible" type="IntegerField">4</field>
+        <field name="categoria" type="CharField">4</field>
+        <field name="tiene_iva" type="BooleanField">True</field>
+    </object>
+    <object model="inventario.producto" pk="4">
+        <field name="descripcion" type="CharField">Cripi</field>
+        <field name="precio" type="DecimalField">28.00</field>
+        <field name="disponible" type="IntegerField">0</field>
+        <field name="categoria" type="CharField">4</field>
+        <field name="tiene_iva" type="BooleanField">True</field>
+    </object>
+    <object model="inventario.producto" pk="12">
+        <field name="descripcion" type="CharField">Guantes</field>
+        <field name="precio" type="DecimalField">20.00</field>
+        <field name="disponible" type="IntegerField">2</field>
+        <field name="categoria" type="CharField">4</field>
+        <field name="tiene_iva" type="BooleanField">True</field>
+    </object>
+    <object model="inventario.producto" pk="13">
+        <field name="descripcion" type="CharField">Bate</field>
+        <field name="precio" type="DecimalField">80.00</field>
+        <field name="disponible" type="IntegerField">5</field>
+        <field name="categoria" type="CharField">2</field>
+        <field name="tiene_iva" type="BooleanField">False</field>
+    </object>
+    <object model="inventario.cliente" pk="1">
+        <field name="cedula" type="CharField">2617816489</field>
+        <field name="nombre" type="CharField">Sneiker</field>
+        <field name="apellido" type="CharField">Diaz</field>
+        <field name="direccion" type="CharField">Calle siempre viva xd</field>
+        <field name="nacimiento" type="DateField">5555-05-05</field>
+        <field name="telefono" type="CharField">04243538716</field>
+        <field name="telefono2" type="CharField">88</field>
+        <field name="correo" type="CharField">sneikerjesus1@gmail.com</field>
+        <field name="correo2" type="CharField">99</field>
+    </object>
+    <object model="inventario.factura" pk="5">
+        <field name="cliente" rel="ManyToOneRel" to="inventario.cliente">2617816489</field>
+        <field name="fecha" type="DateField">2016-02-11</field>
+        <field name="sub_monto" type="DecimalField">80.00</field>
+        <field name="monto_general" type="DecimalField">80.00</field>
+        <field name="iva" rel="ManyToOneRel" to="inventario.opciones">16</field>
+    </object>
+    <object model="inventario.factura" pk="6">
+        <field name="cliente" rel="ManyToOneRel" to="inventario.cliente">2617816489</field>
+        <field name="fecha" type="DateField">2016-02-11</field>
+        <field name="sub_monto" type="DecimalField">312.00</field>
+        <field name="monto_general" type="DecimalField">361.92</field>
+        <field name="iva" rel="ManyToOneRel" to="inventario.opciones">16</field>
+    </object>
+    <object model="inventario.factura" pk="8">
+        <field name="cliente" rel="ManyToOneRel" to="inventario.cliente">2617816489</field>
+        <field name="fecha" type="DateField">2016-02-11</field>
+        <field name="sub_monto" type="DecimalField">216.00</field>
+        <field name="monto_general" type="DecimalField">250.56</field>
+        <field name="iva" rel="ManyToOneRel" to="inventario.opciones">16</field>
+    </object>
+    <object model="inventario.factura" pk="10">
+        <field name="cliente" rel="ManyToOneRel" to="inventario.cliente">2617816489</field>
+        <field name="fecha" type="DateField">2016-02-11</field>
+        <field name="sub_monto" type="DecimalField">108.00</field>
+        <field name="monto_general" type="DecimalField">125.28</field>
+        <field name="iva" rel="ManyToOneRel" to="inventario.opciones">16</field>
+    </object>
+    <object model="inventario.factura" pk="11">
+        <field name="cliente" rel="ManyToOneRel" to="inventario.cliente">2617816489</field>
+        <field name="fecha" type="DateField">2016-02-11</field>
+        <field name="sub_monto" type="DecimalField">392.00</field>
+        <field name="monto_general" type="DecimalField">454.72</field>
+        <field name="iva" rel="ManyToOneRel" to="inventario.opciones">16</field>
+    </object>
+    <object model="inventario.factura" pk="14">
+        <field name="cliente" rel="ManyToOneRel" to="inventario.cliente">2617816489</field>
+        <field name="fecha" type="DateField">2016-02-12</field>
+        <field name="sub_monto" type="DecimalField">624.00</field>
+        <field name="monto_general" type="DecimalField">659.84</field>
+        <field name="iva" rel="ManyToOneRel" to="inventario.opciones">16</field>
+    </object>
+    <object model="inventario.detallefactura" pk="1">
+        <field name="id_factura" rel="ManyToOneRel" to="inventario.factura">5</field>
+        <field name="id_producto" rel="ManyToOneRel" to="inventario.producto">13</field>
+        <field name="cantidad" type="IntegerField">1</field>
+        <field name="sub_total" type="DecimalField">80.00</field>
+        <field name="total" type="DecimalField">80.00</field>
+    </object>
+    <object model="inventario.detallefactura" pk="3">
+        <field name="id_factura" rel="ManyToOneRel" to="inventario.factura">6</field>
+        <field name="id_producto" rel="ManyToOneRel" to="inventario.producto">4</field>
+        <field name="cantidad" type="IntegerField">7</field>
+        <field name="sub_total" type="DecimalField">196.00</field>
+        <field name="total" type="DecimalField">361.92</field>
+    </object>
+    <object model="inventario.detallefactura" pk="8">
+        <field name="id_factura" rel="ManyToOneRel" to="inventario.factura">8</field>
+        <field name="id_producto" rel="ManyToOneRel" to="inventario.producto">12</field>
+        <field name="cantidad" type="IntegerField">4</field>
+        <field name="sub_total" type="DecimalField">80.00</field>
+        <field name="total" type="DecimalField">92.80</field>
+    </object>
+    <object model="inventario.detallefactura" pk="9">
+        <field name="id_factura" rel="ManyToOneRel" to="inventario.factura">8</field>
+        <field name="id_producto" rel="ManyToOneRel" to="inventario.producto">3</field>
+        <field name="cantidad" type="IntegerField">8</field>
+        <field name="sub_total" type="DecimalField">136.00</field>
+        <field name="total" type="DecimalField">157.76</field>
+    </object>
+    <object model="inventario.detallefactura" pk="11">
+        <field name="id_factura" rel="ManyToOneRel" to="inventario.factura">10</field>
+        <field name="id_producto" rel="ManyToOneRel" to="inventario.producto">12</field>
+        <field name="cantidad" type="IntegerField">2</field>
+        <field name="sub_total" type="DecimalField">40.00</field>
+        <field name="total" type="DecimalField">46.40</field>
+    </object>
+    <object model="inventario.detallefactura" pk="12">
+        <field name="id_factura" rel="ManyToOneRel" to="inventario.factura">10</field>
+        <field name="id_producto" rel="ManyToOneRel" to="inventario.producto">3</field>
+        <field name="cantidad" type="IntegerField">4</field>
+        <field name="sub_total" type="DecimalField">68.00</field>
+        <field name="total" type="DecimalField">78.88</field>
+    </object>
+    <object model="inventario.detallefactura" pk="17">
+        <field name="id_factura" rel="ManyToOneRel" to="inventario.factura">14</field>
+        <field name="id_producto" rel="ManyToOneRel" to="inventario.producto">13</field>
+        <field name="cantidad" type="IntegerField">5</field>
+        <field name="sub_total" type="DecimalField">400.00</field>
+        <field name="total" type="DecimalField">400.00</field>
+    </object>
+    <object model="inventario.detallefactura" pk="18">
+        <field name="id_factura" rel="ManyToOneRel" to="inventario.factura">14</field>
+        <field name="id_producto" rel="ManyToOneRel" to="inventario.producto">4</field>
+        <field name="cantidad" type="IntegerField">8</field>
+        <field name="sub_total" type="DecimalField">224.00</field>
+        <field name="total" type="DecimalField">259.84</field>
+    </object>
+    <object model="inventario.proveedor" pk="2">
+        <field name="cedula" type="CharField">26178164</field>
+        <field name="nombre" type="CharField">Sneiker Jesus</field>
+        <field name="apellido" type="CharField">Diaz Ramos</field>
+        <field name="direccion" type="CharField">Calle Rivas Numero 29</field>
+        <field name="nacimiento" type="DateField">2016-02-16</field>
+        <field name="telefono" type="CharField">04243538716</field>
+        <field name="telefono2" type="CharField"></field>
+        <field name="correo" type="CharField">sneikerjesus1@gmail.com</field>
+        <field name="correo2" type="CharField"></field>
+    </object>
+    <object model="inventario.proveedor" pk="5">
+        <field name="cedula" type="CharField">8888888</field>
+        <field name="nombre" type="CharField">Una</field>
+        <field name="apellido" type="CharField">UltimaPrueba</field>
+        <field name="direccion" type="CharField">nueva esparta</field>
+        <field name="nacimiento" type="DateField">2018-04-15</field>
+        <field name="telefono" type="CharField">22</field>
+        <field name="telefono2" type="CharField"></field>
+        <field name="correo" type="CharField">uno@uno.com</field>
+        <field name="correo2" type="CharField"></field>
+    </object>
+    <object model="inventario.pedido" pk="3">
+        <field name="proveedor" rel="ManyToOneRel" to="inventario.proveedor">26178164</field>
+        <field name="fecha" type="DateField">2016-02-12</field>
+        <field name="sub_monto" type="DecimalField">56.00</field>
+        <field name="monto_general" type="DecimalField">64.96</field>
+        <field name="iva" rel="ManyToOneRel" to="inventario.opciones">16</field>
+        <field name="presente" type="BooleanField">True</field>
+    </object>
+    <object model="inventario.pedido" pk="4">
+        <field name="proveedor" rel="ManyToOneRel" to="inventario.proveedor">26178164</field>
+        <field name="fecha" type="DateField">2016-02-11</field>
+        <field name="sub_monto" type="DecimalField">70.00</field>
+        <field name="monto_general" type="DecimalField">81.20</field>
+        <field name="iva" rel="ManyToOneRel" to="inventario.opciones">16</field>
+        <field name="presente" type="BooleanField">True</field>
+    </object>
+    <object model="inventario.detallepedido" pk="4">
+        <field name="id_pedido" rel="ManyToOneRel" to="inventario.pedido">3</field>
+        <field name="id_producto" rel="ManyToOneRel" to="inventario.producto">4</field>
+        <field name="cantidad" type="IntegerField">2</field>
+        <field name="sub_total" type="DecimalField">56.00</field>
+        <field name="total" type="DecimalField">64.96</field>
+    </object>
+</django-objects>

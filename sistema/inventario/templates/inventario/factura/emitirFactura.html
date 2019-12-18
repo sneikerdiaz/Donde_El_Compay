@@ -1,0 +1,47 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+<article class="content forms-page">
+	    <div class="title-block">
+          <h3 class="title">Emitir factura</h3>
+          <p class="title-description">Introduzca la cedula y el numero de
+          productos para generar los campos</p>
+        </div>
+<section class="section">
+    <div class="row sameheight-container">
+	<div class="col-md-12">
+		          {% if messages %}
+                  {% for message in messages %}
+                  	         <div class="card card-primary">
+            <div class="card-header"> 
+                <div class="header-block">
+                    <em class="fa fa-check"></em>
+                        <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div>
+         {% endfor %}
+        {%endif%}       
+
+		<div class="card card-block sameheight-item">
+			<form role="form" method="POST"onsubmit="return validarTodo('factura')">
+			{% csrf_token %}
+
+				{% for field in form %}
+				<div class="form-group">
+				<label for="{{ field.name }}">
+				{{field.label}}
+				</label>
+				{{field}}
+				</div>
+				{% endfor %}
+		<div class="form-group">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+			</form>
+		</div>
+	</div>
+	</div>
+</section>
+</article>
+{% endblock %}

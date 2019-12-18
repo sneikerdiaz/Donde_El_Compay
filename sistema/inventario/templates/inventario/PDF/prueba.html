@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                    }   
+
+            th, td {
+                text-align: left;
+                padding: 8px;
+                    }
+
+            tr:nth-child(even){background-color: #f2f2f2}
+
+            th,tfoot {
+                background-color: #4CAF50;
+                color: white;
+                }
+
+            #factura_mensaje
+            {
+                text-align: center;
+                background-color: #b8afaf;
+                font-size: 18px;
+                padding: auto;
+                padding-top: 8px;
+            }
+
+            #negocio_nombre
+            {
+                font-size: 22px;
+                font-weight: 100;
+                text-align: center;
+                background-color: #4CAF50;
+                color: #ffffff;
+                padding-top: 8px;
+                height: 12px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div id="negocio_nombre">
+                {{ general.nombre_negocio }}
+            </div>
+
+            <div class='header'>
+                {% if modo == 'factura' %}
+                <p class='title'>Factura #{{ id_reporte }} </p>
+                {% else %}
+                <p class='title'>Pedido #{{ id_reporte }} </p>
+                {% endif %}
+            </div>
+        <div>
+        <div class='details'>
+            {% if modo == 'factura' %}
+            Nombre completo del cliente: {{ nombre_cliente }} <br/>
+            Cedula del cliente: {{ cedula_cliente }}  <br/>
+            {% else %}
+            Nombre completo del proveedor: {{ nombre_proveedor }} <br/>
+            Cedula del proveedor: {{ cedula_proveedor }}  <br/>
+            {% endif %}
+            Total general: {{ monto_general }}  <br/>
+            Fecha: {{ fecha }} <br/>
+            IVA utilizado: {{ iva }}% <br/>
+            <hr class='hrItem' />
+        </div>
+    </div>
+
+    <div>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Sub-total</th>
+    <th>Total</th>
+  </tr>
+  {% for producto in detalles %}
+  <tr>
+    <td>{{ producto.id_producto.descripcion }}</td>
+    <td>{{ producto.cantidad }}</td>
+    <td>{{ producto.sub_total }}</td>
+    <td>{{ producto.total }}</td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <td>-----</td>
+    <td>-----</td>
+    <td>-----</td>
+    <td>
+      Total general : {{ monto_general }}
+    </td>
+  </tr>
+</table>
+
+    </div>
+
+    <div id="factura_mensaje">
+        {{ general.mensaje_factura }}
+    </div>
+
+    </body>
+</html>

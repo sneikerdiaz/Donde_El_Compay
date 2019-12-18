@@ -1,0 +1,64 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+
+
+<article class="content forms-page">
+	    <div class="title-block">
+          <h3 class="title">Emitir factura</h3>
+          <p class="title-description">Llene todos los campos</p>
+        </div>
+<section class="section">
+    <div class="row sameheight-container">
+	<div class="col-md-12">
+		<form role="form" method="POST">
+		{{ formset.management_form }}	
+		{% for form in formset %}
+		<div class="card card-block sameheight-item">
+			{% csrf_token %}
+				{% for field in form %}
+				{% if field.name == 'valor_subtotal' %}
+					{{field}}
+				{% elif field.name == 'cantidad' %}
+			<div class="row form-group">
+				<label for="{{ field.name }}" class="col-3 form-control-label">
+					{{field.label}}
+				</label>
+
+                <div class="col-3">
+                 {{field}}
+             	</div>
+
+             	<label for="{{ form.cantidad_disponibles.name }}" class="col-3 form-control-label">
+					{{form.cantidad_disponibles.label}}
+				</label>
+
+             	<div class="col-3">
+                 {{form.cantidad_disponibles}}
+             	</div>
+            </div>
+            {% elif field.name == 'cantidad_disponibles' %}
+
+            {% elif field.name == 'selec_disponibles' %}
+            {{ field }}
+	
+				{% else %}
+				<div class="form-group">
+				<label for="{{ field.name }}">
+				{{field.label}}
+				</label>
+				{{field}}
+				</div>
+				{% endif %}
+				{% endfor %}
+		</div>
+		{% endfor %}
+		<button type="submit" class="btn btn-primary">Ingresar</button>
+		</form>
+	</div>
+	</div>
+</section>
+</article>
+{% load static %}
+<script src='{% static "inventario/js/inventario.js" %}'></script>
+{% endblock %}

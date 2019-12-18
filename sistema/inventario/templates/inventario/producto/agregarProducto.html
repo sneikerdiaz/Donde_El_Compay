@@ -1,0 +1,79 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+<article class="content forms-page">
+	    <div class="title-block">
+	    	{% if editar  %}
+          <h3 class="title">Editar producto</h3>
+          <p class="title-description">Cambie los datos del producto</p>
+	    	{% else %}
+          <h3 class="title">Agregar producto</h3>
+          <p class="title-description">Introduzca los datos del producto</p>
+          {% endif %}
+        </div>
+<section class="section">
+    <div class="row sameheight-container">
+	<div class="col-md-12">
+		{% if modo == "agregado" %}
+		{% if messages %}
+        {% for message in messages %}
+		 <div class="card card-primary">
+            <div class="card-header"> 
+            	<div class="header-block">
+            		<em class="fa fa-check"></em>
+                        <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div>
+         {%endfor%}
+		{%endif%}
+		{%endif%}
+
+							{% if modo == "editado" %}
+ 							{% if messages %}
+                            {% for message in messages %}
+		 <div class="card card-primary">
+            <div class="card-header"> 
+            	<div class="header-block">
+            		<em class="fa fa-check"></em>
+                        <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div>
+         {%endfor%}
+		{%endif%}
+		{%endif%}
+
+		<div class="card card-block sameheight-item">
+			<form role="form" method="POST" onsubmit="return validarTodo('producto')">
+			{% csrf_token %}
+
+				{% for field in form %}
+				{% if field.name == 'tiene_iva' %}
+				<div class="form-group">
+					<label>
+						{{field}}
+						<span>
+						{{field.label}}
+						</span>
+					</label>
+				</div>
+				{% else %}
+				<div class="form-group">
+				<label for="{{ field.name }}">
+				{{field.label}}
+				</label>
+				{{field}}
+				</div>
+				{% endif %}
+				{% endfor %}
+		<div class="form-group">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+			</form>
+		</div>
+	</div>
+	</div>
+</section>
+</article>
+{% endblock %}

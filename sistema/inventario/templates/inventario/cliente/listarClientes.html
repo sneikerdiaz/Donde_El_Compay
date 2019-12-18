@@ -1,0 +1,83 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+
+<!-- NO MODIFICAR ---------------------------------->
+{% load static %}
+<script src='{% static "inventario/js/eliminarEntradas.js" %}'></script>
+<!-- FIN DE JAVASCRIPT ------------------------------------>
+
+
+                <article class="content responsive-tables-page">
+                    <div class="title-block">
+                        <h1 class="title"> Listar clientes </h1>
+                        <p class="title-description"> Verifique los clientes agregados </p>
+                    </div>
+                    <section class="section">
+                        <div class="row">
+                            <div class="col-md-12">
+                            {% if messages %}
+                            {% for message in messages %}
+         <div class="card card-primary">
+            <div class="card-header"> 
+                <div class="header-block">
+                    <em class="fa fa-check"></em>
+                        <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div>
+         {% endfor %}
+        {%endif%}                            
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="card-title-block">
+                                            <h3 class="title">Clientes</h3>
+                                        </div>
+                                        <section class="example">
+                                            <div class="table-responsive">
+                                                <table id="example2" class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Cedula</th>
+                                                            <th>Nombre completo</th>
+                                                            <th>Telefono</th>
+                                                            <th>Correo</th>
+                                                            <th>Opciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    	{% for fila in tabla %}
+                                                        <tr>
+                                                            <td>{{ fila.id }}</td>
+                                                            <td>{{ fila.cedula}}</td>
+                                                            <td>{{ fila.nombre }} {{ fila.apellido }}</td>
+                                                            <td>{{ fila.telefono }}</td>
+                                                            <td>{{ fila.correo }}</td>
+                                                            <td>
+
+                                                <div class="btn-group">
+
+                                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></button>
+                                                
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="/inventario/editarCliente/{{ fila.id}}">Editar/Ver cliente</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" onclick="eliminarEntrada( {{fila.id}},'cliente' )">Eliminar Cliente</a>
+                                                    </div>
+                                                     </div>
+                                                            </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+{% endblock %}

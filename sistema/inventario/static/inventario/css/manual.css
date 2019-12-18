@@ -1,0 +1,486 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Helvetica;
+    overflow: hidden;
+}
+
+header {
+    display: block;
+    background: #13a427;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+/********* Menú Lateral Inicio ***********/
+
+.menu-lateral {
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    background: #3d5e34;
+}
+
+.menu-lateral h2 {
+    padding: 10px;
+    background: #203d1d;
+    color: white;
+    text-align: center;
+}
+
+.menu-lateral li > a {
+    display: block;
+    padding: 10px 10px 10px 40px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s;
+    border-bottom: 1px solid #24422c;
+}
+
+.menu-lateral li > a:hover:not(.activo) {
+    background: #24422c;
+    border-left: 5px solid #6bdb34;
+}
+
+/********* Menú Lateral Fin ***********/
+
+/******** Botón del menú Inicio ********/
+
+.btn-menu {
+    width: 2.5%;
+    display: block;
+    padding: 10px;
+}
+
+.btn-menu:hover {
+    background: #289220;
+}
+
+.btn-menu:active {
+    background: #125426;
+}
+
+
+.abrir {
+    margin-left: 20%;
+}
+
+/******** Botón del menú Fin********/
+
+/********** Contenido *************/
+
+#contenido {
+    position: absolute;
+    display: block;
+    background: #ecf0f1;
+    width: auto;
+    height: 93.7%;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    overflow: auto;
+    padding: 10px;
+}
+
+code {
+    display: block;
+    text-align: center;
+}
+
+/********** Headers - Incio *************/
+
+.header {
+    height: 20%;
+    color: white;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px 1px 0px 1px;
+}
+
+.style {
+    height: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-family: Helvetica;
+    color: black;
+    text-indent: 20%;
+    line-height: 5.5;
+}
+
+#inicio-header {
+    background: white url(../imagenes/inicio/header.png) left no-repeat;
+    background-size: 300px;
+}
+
+#poo-header {
+    background: white url(../imagenes/poo/header.jpg) left no-repeat;
+    background-size: 350px;
+}
+
+#html5-header {
+    background: white url(../imagenes/html5/header.gif) left no-repeat;
+    background-size: 220px;
+}
+
+#css3-header {
+    background: white url(../imagenes/css3/header.png) left no-repeat;
+    background-size: 200px;
+}
+
+#js-header {
+    background: white url(../imagenes/js/header.png) left no-repeat;
+    background-size: 200px;
+}
+
+#php-header {
+    background: white url(../imagenes/php/header.png) left no-repeat;
+    background-size: 300px;
+}
+
+#autor-header {
+    background: #6dbec5 url(../imagenes/autores/header.jpg) left no-repeat;
+    background-size: 500px;
+}
+
+
+#html5-header h1, #css3-header h1, #js-header h1, #php-header h1, #autor-header h1 {
+    text-indent: 10%;
+}
+
+/********** Headers - Fin *************/
+
+/******** Autores - Inicio ***********/
+
+#autores {
+    position: relative;
+    top: 40%;
+    height: 600px;
+    text-align: center;
+}
+
+.autor {
+    position: relative;
+    top: 30%;
+    background: white;
+    display: inline-block;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 16%;
+    margin-left: 40px;
+    border-radius: 5px;
+}
+
+.autor:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.autor img {
+    border-radius: 5px 5px 0 0;
+}
+
+.contenedor {
+    padding: 2px 16px;
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+#contenido {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+#contenido::after {
+    content: "";
+    display: block;
+}
+
+.footer, #contenido::after{
+    height: 50px;
+}
+
+.footer {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #40db34;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+}
+
+/******** Autores - Fin ***********/
+
+/*******  Activar ventana    ******/
+
+.activo {
+    background: #243342;
+    border-left: 5px solid #3498db;
+}
+/********** Menú desplegable Inicio **********/
+
+#dropdown {
+    background: #3d698f;
+    font-size: 13px;
+    transition: max-height .5s ease-in-out, opacity 1s ease-in-out;
+}
+
+#dropdown a {
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    color: #d9d9d9;
+    transition: 0.5s;
+}
+
+#dropdown a:hover {
+    color: white;
+}
+
+
+.acordeonCerrado {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.acordeonAbierto {
+    opacity: 1;
+    max-height: 300px;
+    overflow: visible;
+}
+
+
+/********** Menú desplegable Fin **********/
+
+/******* Tabuladores - Incio *******/
+
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #51d643;
+}
+
+div.tab button {
+    background-color: inherit;
+    color: white;
+    font-weight: bold;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+div.tab button:hover, div.tab button.active {
+    background-color: #30b929;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+article {
+    background: #d5dadd;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+article h3 {
+    text-align: center;
+}
+
+article p {
+    text-indent: 1%;
+    line-height: 1.5;
+}
+
+article img {
+    position: relative;
+    border-radius: 5px;
+}
+
+article li {
+    position: relative;
+    display: inline-block;
+    left: 20%;
+}
+
+/*** Tabla ***/
+
+table, th, td {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 5px 5px 5px 15px;
+}
+
+th:first-child {
+    width: 30%;
+}
+
+th {
+    background: #439bd6;
+    color: white;
+    text-align: left;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background: #ddd;
+}
+
+
+/******* Tabuladores - Fin *******/
+
+/****** Imagenes ******/
+
+.menu-lateral ul li:first-child a {
+    background-image: url(../imagenes/iconos/home-icon.png);
+    background-position: 9px 5px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:first-child a:hover {
+    background-image: url(../imagenes/iconos/home-icon.png);
+    background-position: 9px 5px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(2) a {
+    background-image: url(../imagenes/iconos/poo-icon.png);
+    background-position: 12px 7px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(2) a:hover {
+    background-image: url(../imagenes/iconos/poo-icon.png);
+    background-position: 12px 7px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(3) a {
+    background-image: url(../imagenes/iconos/html5-icon.png);
+    background-position: 10px 4px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(3) a:hover {
+    background-image: url(../imagenes/iconos/html5-icon.png);
+    background-position: 10px 4px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(4) a {
+    background-image: url(../imagenes/iconos/css3-icon.png);
+    background-position: 12px 4px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(4) a:hover {
+    background-image: url(../imagenes/iconos/css3-icon.png);
+    background-position: 12px 4px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(5) a {
+    background-image: url(../imagenes/iconos/js-icon.png);
+    background-position: 9px 4px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(5) a:hover {
+    background-image: url(../imagenes/iconos/js-icon.png);
+    background-position: 9px 4px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(6) a {
+    background-image: url(../imagenes/iconos/php-icon.png);
+    background-position: 9px 4px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:nth-child(6) a:hover {
+    background-image: url(../imagenes/iconos/php-icon.png);
+    background-position: 9px 4px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:last-child a {
+    background-image: url(../imagenes/iconos/autor-icon.png);
+    background-position: 10px 8px;
+    background-repeat: no-repeat;
+}
+
+.menu-lateral ul li:last-child a:hover {
+    background-image: url(../imagenes/iconos/autor-icon.png);
+    background-position: 10px 8px;
+    background-repeat: no-repeat;
+}
+
+
+/******* Acordeones - Inicio *******/
+
+
+button.accordion {
+    background-color: #439bd6;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #2980b9;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #2980b9;
+}
+
+button.accordion:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2212";
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+/******* Acordeones - Fin *******/

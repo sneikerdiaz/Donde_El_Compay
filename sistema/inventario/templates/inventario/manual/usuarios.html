@@ -1,0 +1,171 @@
+{% extends "inventario/manual/comun/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+            <div id="contenido" class="abrir">
+                <header class="header" id="poo-header">
+                    <h1 class="style">Usuarios</h1>
+                </header>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'poo-1')" id="defaultOpen">Ingresar un usuario</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-2')">Ver usuarios</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-3')">Ver/Editar un usuario</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-4')">Eliminar un usuario</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-5')">Permisos</button>
+                </div>
+
+                <div id="poo-1" class="tabcontent">
+                    <article>
+                        <h3>¿Como ingresar un usuario?</h3><br>
+                        <img src="{% static 'inventario/assets/manual/usuarios/ingresar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <p>Para ingresar un usuario, se deben llenar los siguientes campos, y pulsar el boton 'Ingresar' para introducir el registro en el sistema. A continuacion se explican cada uno de los campos del formulario.</p>
+
+                        <br>
+
+                        <p><b>1)Nombre de usuario:</b> Es el nombre o nick de usuario, puede ser un apodo o cualquier cosa que el usuario guste.</p>
+
+                        <br>
+
+                        <p><b>2)Nombre:</b> Es el nombre o nombres reales del usuario, de ser varios nombres estos van separados por un espacio.</p>
+
+                        <br>
+
+                        <p><b>3)Apellido:</b> Es el o los apellidos del usuario, para mas legibilidad se recomienda colocar solo el primer apellido, pero si se desea se pueden poner dos.</p>
+
+                        <br>
+
+                        <p><b>4)Correo electronico:</b> Aca va el correo electronico del usuario, si el correo introducido ya fue tomado por otro usuario, se arrojara un mensaje de error.</p>
+
+
+                        <br>
+
+                        <p><b>5)Nivel de acceso:</b> Determina el rango del usuario a crear, hay dos posibles valores, administrador o usuario.</p>
+
+                        <p>Para mas informacion de los rangos y permisos, vaya a la pestaña de 'Permisos'.</p>
+
+                        <br>
+
+                        <p><b>6)Clave:</b> Es la contraseña que el usuario usara para acceder a su cuenta.</p>
+
+                        <br>
+
+                        <p><b>7)Repetir clave:</b> En este campo se debe repetir la contraseña que se coloco arriba, si no coinciden se arrojara un mensaje de error.</p>
+
+                        <br>
+
+                        <p><b>8)Boton de ingresar:</b>Ingresa todos los datos del usuario.</p>
+                       
+                    </article>
+                </div>
+
+                <div id="poo-2" class="tabcontent">
+                    <article>
+                        <h3>¿Cómo ver los usuarios?</h3><br>
+                        <img src="{% static 'inventario/assets/manual/usuarios/listar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <p>La interfaz para ver los usuarios es bastante simple, consiste en una lista inteligente que puede ser filtrada y paginada con unos pocos clicks.</p>
+                        <br>
+                        <p><b>1)Selector de items:</b>
+                        Permite al usuario elegir la cantidad de items aparezcan por pagina, al dar click sobre el elemento, saldra una lista con 4 posibles valores: <i>10</i>,<i>25</i>,<i>50</i>,<i>100</i>.</p>
+                        <br>
+                        <p><b>2)Filtro de busqueda:</b>
+                        Es un campo que delimita y muestra solo aquellos items cuyo nombre concuerden con lo que se ha introducido. En la imagen se puede apreciar que solo uno de dos items ha aparecido en la lista debido a que se ha introducido una palabra relacionada al mismo en el campo.</p>
+                        <br>
+                        <p><b>3)Boton de opciones:</b>
+                        Es un boton que, al ser presionado muestra una lista de opciones que afectan al item en cuestion, por cada fila, hay un item y cada uno de ellos posee un boton de opciones que permite modificarlo.</p>
+                        
+                        <img src="{% static 'inventario/assets/manual/usuarios/listar-opciones.png' %}" alt="telefono" style="width:20%;height:20%;">
+                        <p>
+                        Este es el boton de opciones despues de darle click, se puede ver una lista emergente con dos sub opciones, Ver usuario y Eliminar usuario, de los cuales se hablara despues.
+                        </p>
+
+                        <br>
+                        <p><b>4)Paginador:</b>
+                        El paginador permite trasladarse a los siguientes items de la lista en el caso de que la lista haya llegado a su limite, por ejemplo: Si la lista solo permite 10 elementos (valor por defecto en el selector de items) entonces al darle en el boton 'Siguiente' del paginador este procedera desde el item 11 hasta el 20 (o menos, si es un numero menor).</p>
+                        <br>
+                        <p>Naturalmente, si se desea regresar a items anteriores, basta con darle en 'Anterior', tambien se puede ir a una seccion particular de items con darle en el numero correspondiente (los cuales salen como botones verdes con su respectivo numero).</p>
+
+
+
+                    </article>
+                </div>
+
+                <div id="poo-3" class="tabcontent">
+                    <article>
+                        <h3>Como ver/editar un usuario?</h3><br>
+
+                        <img src="{% static 'inventario/assets/manual/usuarios/ver.png' %}" alt="telefono" style="width:100%;height:100%;">
+                            <br><p>Si se ha elegido la opcion de 'Ver Usuario', el usuario sera dirigido a esta pantalla, en la cual puede ver los datos del perfil del usuario en particular.</p>
+                            <br>
+                            <p>Tambien cuenta con dos botones(parte de arriba) en las cuales puede editar al usuario o cambiarle la clave (esto es, obviamente, si se tienen permisos mayores a los del usuario que se quiere modificar).
+                            </p>
+
+                            <br>
+
+                        <img src="{% static 'inventario/assets/manual/usuarios/editar.png' %}" alt="telefono" style="width:100%;height:100%;">
+
+                            <br>
+                            <br>
+
+                            <p>Si se ha escogido la opcion de 'Editar perfil' se llevara a una pantalla similar a de 'Crear usuario' pero con datos establecidos, estos son los datos actuales del perfil a modificar.</p>
+
+                            <p>El funcionamiento( a excepcion de que aca no hay campos de clave) es similar a <a href="#" onclick="openCity(event, 'poo-1')">'Crear usuario'</a>, asi que puede recurrir a esa pestaña para mas informacion</p>
+                            <br>
+
+                            <br>
+
+                        <img src="{% static 'inventario/assets/manual/usuarios/clave.png' %}" alt="telefono" style="width:100%;height:100%;">
+
+                            <br>
+                            <br>
+
+                            <p>Si se ha escogido la opcion de 'Editar clave' se llevara a una pantalla en la cual el administrador debe proporcionar la clave nueva que desea para ese usuario, y la repeticion de la misma.</p>
+
+                            <p>Para poder acceder a esta funcion se debe ser administrador, no obstante, un administrador no puede cambiarle la clave o perfil a otro, solo el <i>Super-administrador</i> puede editar a todos los usuarios independientemente de sus rangos, incluido a el mismo.</p>
+                            <br>
+
+                    </article>
+                </div>
+
+                <div id="poo-4" class="tabcontent">
+                    <article>
+
+                        <h3>Como eliminar un usuario?</h3><br>
+        <img src="{% static 'inventario/assets/manual/usuarios/eliminar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <p>Si se ha elegido la opcion de 'Eliminar usuario' en el boton de opciones, se desplegara una interfaz de confirmacion para autorizar la eliminacion del usuario, de querer continuar con la operacion, solo se necesita oprimir el boton que dice 'Si,borrar', de lo contrario basta con oprimir el boton de 'No, cambie de opinion'.
+                        </p>
+
+                        <p>Una vez eliminado el usuario, se mostrara un mensaje que dira que el usuario se elimino con exito.
+                        </p>
+
+                        <br>
+                    </article>
+                </div>
+
+                <div id="poo-5" class="tabcontent">
+                    <article>
+
+                        <h3>Dudas sobre los permisos?</h3><br>
+                        <br>
+
+                        <p>Este sistema cuenta con una seguridad basada en rangos de usuarios, entre mayor sea el rango, mas privilegios se tendra y mas funciones seran accesibles.
+                        </p>
+
+                        <p>Hay tres tipos o rangos de usuarios:</p>
+                        <br>
+                        <p><b>Usuarios(Nivel 0):</b> Es el rango mas bajo, los usuarios pueden ingregar productos, clientes, proveedores y facturas, sin embargo no pueden modificar ni editar partes cruciales del sistema ni a otros usuarios de igual o mayor rango.</p>
+                        <br>
+                        <p><b>Administradores(Nivel 1):</b> Pueden hacer lo que hacen los usuarios, pero tambien pueden editar partes claves del sistema y alterar a otros usuarios de menor rango.</p>
+                        <br>
+                        <p><b>Super-administrador(Nivel 2/Maximo):</b> Es el primer usuario creado en el sistema, es unico en su clase y tiene acceso a cada modulo del sistema, puede alterar, modificar, cambiar a todos los usuarios del sistema( incluido el mismo), tambien puede eliminar a otros usuarios, pero no a el mismo.</p>
+
+
+                        <br>
+                    </article>
+                </div>
+
+                {% include 'inventario/manual/comun/footer_incluido.html' %}
+            </div>
+
+             {% endblock %}

@@ -1,0 +1,143 @@
+{% extends "inventario/manual/comun/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+            <div id="contenido" class="abrir">
+                <header class="header" id="poo-header">
+                    <h1 class="style">Proveedor</h1>
+                </header>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'poo-1')" id="defaultOpen">Ingresar un proveedor</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-2')">Ver los proveedores</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-3')">Editar los proveedores</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-4')">Eliminar los proveedores</button>
+                </div>
+
+                <div id="poo-1" class="tabcontent">
+                    <article>
+                        <h3>¿Como ingresar un proveedor?</h3><br>
+                        <img src="{% static 'inventario/assets/manual/proveedor/ingresar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <p>Para ingresar un proveedor, se deben llenar los siguientes campos, y pulsar el boton 'Ingresar' para introducir el registro en el sistema. A continuacion se explican cada uno de los campos del formulario.</p>
+
+                        <br>
+
+                        <p><b>1)Tipo de cedula:</b> Es el tipo de identificacion del cliente, la V significa 'Venezolano' y la E 'Extranjero'.</p>
+
+                        <br>
+
+                        <p><b>2)Campo de cedula:</b> Es el serial o numero de cedula, sin puntos ni ningun otro caracter que no sea un numero.</p>
+
+                        <br>
+
+                        <p><b>3)Nombre del proveedor:</b> Aca se coloca el o los nombres del proveedor</p>
+
+                        <br>
+
+                        <p><b>4)Apellido del proveedor:</b> Aca se coloca el apellido o los apellidos del proveedor.</p>
+
+
+                        <br>
+
+                        <p><b>5)Direccion del proveedor:</b> Se pone la direccion del proveedor, admite todo tipo de caracteres.</p>
+
+                        <br>
+
+                        <p><b>6)Fecha de nacimiento del proveedor:</b> En este elemento se introduce la fecha del proveedor, el formato es mes/dia/año.</p>
+
+
+                        <br>
+
+                        <p><b>7)Numero telefonico del proveedor:</b>En este campo va el numero telefonico del proveedor, solo se aceptan numeros.</p>
+
+                        <br>
+
+                        <img src="{% static 'inventario/assets/manual/proveedor/ingresar2.png' %}" alt="telefono" style="width:100%;height:100%;">
+
+                        <br>
+
+                        <p><b>8)Correo electronico del proveedor:</b> Aca va el correo electronico del proveedor.</p>
+
+                        <br>
+
+                        <p><b>9)Segundo correo electronico:</b> Campo opcional. Aparece si el checkbox de campos opcionales se activa. Aca va el segundo correo electronico, si el proveedor dispone de uno.</p>
+
+
+                        <br>
+
+                        <p><b>10)Segundo numero telefonico:</b> Campo opcional. Aparece si el checkbox de campos opcionales se activa. Aca va el segundo numero telefonico, si el proveedor dispone de uno.</p>
+
+                        <br>
+
+                        <p><b>11)Checkbox de campos opcionales:</b> Si este elemento es marcado, mostrara los campos opcionales mas arriba, y viceversa.</p>
+
+
+                        <br>
+
+                        <p><b>12)Boton de ingresar:</b>Ingresa todos los datos del proveedor.</p>
+                       
+                    </article>
+                </div>
+
+                <div id="poo-2" class="tabcontent">
+                    <article>
+                        <h3>¿Cómo ver los proveedores?</h3><br>
+                        <img src="{% static 'inventario/assets/manual/proveedor/listar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <p>La interfaz para ver los proveedores es bastante simple, consiste en una lista inteligente que puede ser filtrada y paginada con unos pocos clicks.</p>
+                        <br>
+                        <p><b>1)Selector de items:</b>
+                        Permite al usuario elegir la cantidad de items aparezcan por pagina, al dar click sobre el elemento, saldra una lista con 4 posibles valores: <i>10</i>,<i>25</i>,<i>50</i>,<i>100</i>.</p>
+                        <br>
+                        <p><b>2)Filtro de busqueda:</b>
+                        Es un campo que delimita y muestra solo aquellos items cuyo nombre concuerden con lo que se ha introducido. En la imagen se puede apreciar que solo uno de dos items ha aparecido en la lista debido a que se ha introducido una palabra relacionada al mismo en el campo.</p>
+                        <br>
+                        <p><b>3)Boton de opciones:</b>
+                        Es un boton que, al ser presionado muestra una lista de opciones que afectan al item en cuestion, por cada fila, hay un item y cada uno de ellos posee un boton de opciones que permite modificarlo.</p>
+                        
+                        <img src="{% static 'inventario/assets/manual/proveedor/listar-opciones.png' %}" alt="telefono" style="width:20%;height:20%;">
+                        <p>
+                        Este es el boton de opciones despues de darle click, se puede ver una lista emergente con dos sub opciones, Editar/Ver proveedor y Eliminar proveedor, de los cuales se hablara despues.
+                        </p>
+
+                        <br>
+                        <p><b>4)Paginador:</b>
+                        El paginador permite trasladarse a los siguientes items de la lista en el caso de que la lista haya llegado a su limite, por ejemplo: Si la lista solo permite 10 elementos (valor por defecto en el selector de items) entonces al darle en el boton 'Siguiente' del paginador este procedera desde el item 11 hasta el 20 (o menos, si es un numero menor).</p>
+                        <br>
+                        <p>Naturalmente, si se desea regresar a items anteriores, basta con darle en 'Anterior', tambien se puede ir a una seccion particular de items con darle en el numero correspondiente (los cuales salen como botones verdes con su respectivo numero).</p>
+
+
+
+                    </article>
+                </div>
+
+                <div id="poo-3" class="tabcontent">
+                    <article>
+                        <h3>Como editar un proveedor?</h3><br>
+
+                        <img src="{% static 'inventario/assets/manual/proveedor/editar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                            <br><p>Si se ha elegido la opcion de 'Editar/Ver proveedor', el usuario sera dirigido a esta pantalla, que es exactamente igual a la de 'Agregar proveedor' con la diferencia de que los campos ya estan llenados con los datos actuales de dicho proveedor (Los cuales se han ingresado por primera vez cuando se agrego el proveedor)</p>
+                            <br>
+                            <p>La interfaz se usa de la misma forma que 'Agregar proveedor', una vez procesado el formulario, los datos del proveedor cambiaran a los que se haya puesto en el instante de la modificacion.</p>
+    
+                    </article>
+                </div>
+
+                <div id="poo-4" class="tabcontent">
+                    <article>
+
+                        <h3>Como eliminar un proveedor?</h3><br>
+        <img src="{% static 'inventario/assets/manual/proveedor/eliminar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <p>Si se ha elegido la opcion de 'Eliminar proveedor' en el boton de opciones, se desplegara una interfaz de confirmacion para autorizar la eliminacion del proveedor, de querer continuar con la operacion, solo se necesita oprimir el boton que dice 'Si,borrar', de lo contrario basta con oprimir el boton de 'No, cambie de opinion'.
+                        </p>
+
+                        <p>Una vez eliminado el proveedor, se mostrara un mensaje que dira que el proveedor se elimino con exito.
+                        </p>
+
+                        <br>
+                    </article>
+                </div>
+                {% include 'inventario/manual/comun/footer_incluido.html' %}
+            </div>
+
+             {% endblock %}

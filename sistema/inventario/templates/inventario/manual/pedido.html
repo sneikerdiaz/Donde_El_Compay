@@ -1,0 +1,155 @@
+{% extends "inventario/manual/comun/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+            <div id="contenido" class="abrir">
+                <header class="header" id="poo-header">
+                    <h1 class="style">Pedido</h1>
+                </header>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'poo-1')" id="defaultOpen">Ingresar un pedido</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-2')">Ver los pedidos</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-3')">Detalles de los pedidos</button>
+                    <button class="tablinks" onclick="openCity(event, 'poo-4')">Imprimir reportes</button>
+                </div>
+
+                <div id="poo-1" class="tabcontent">
+                    <article>
+                        <h3>¿Como ingresar un pedido?</h3><br>
+                        <p>Para ingresar un pedido, se deben llenar los siguientes campos, y pulsar el boton 'Ingresar' para introducir el registro en el sistema. A continuacion se explican cada uno de los campos del formulario.</p>
+
+                        <p>El proceso de ingreso de pedidos se divide en dos partes.</p>
+
+                        <br>
+
+                        <p><b><h2>Primera parte / Numero de productos y proveedor:</h2></b></p>
+                        <br>
+                        <img src="{% static 'inventario/assets/manual/pedido/ingresar.png' %}" alt="telefono" style="width:100%;height:100%;">
+
+                        <br>
+
+                        <p><b>1)Numero de productos:</b> Es el numero de productos que se van a emitir (No confundir con las existencias o unidades de los mismos).</p>
+
+                        <br>
+
+                        <p><b>2)Proveedor:</b> Es una lista de los proveedores ya registrados en la base de datos, se puede escoger solo uno por pedido.</p>
+
+                        <br>
+
+                        <p><b>3)Boton de ingresar:</b> Envia la peticion al sistema para pasar a la siguiente parte con los datos actuales</p>
+
+                        <br>
+
+                        <p><b><h2>Segunda parte / Detalles del pedido:</h2></b></p>
+                        <br>
+                        <img src="{% static 'inventario/assets/manual/pedido/ingresar2.png' %}" alt="telefono" style="width:100%;height:100%;">
+
+
+                        <br>
+
+                        <p><b>1)Descripcion:</b> Se tiene que escoger la descripcion o nombre del producto de una lista que sale en orden alfabetico, es obligatorio.</p>
+
+                        <br>
+
+                        <p><b>2)Precio del producto:</b> Es un campo no modificable que cambia automaticamente al colocar una descripcion o nombre en el campo de arriba.</p>
+
+
+                        <br>
+
+                        <p><b>3)Cantidad:</b>Se debe colocar un numero positivo, sin decimales. Tambien se pueden usar las teclas direccionales para incrementar o decrementar la cantidad.</p>
+
+                        <br>
+
+                        <p><b>4)Sub-total:</b>Es un campo no modificable que muestra el subtotal obtenido por el precio del producto por la cantidad que se quiere del mismo (que se obtiene del campo de arriba).</p>
+
+                        <br>
+
+                        <p>En el ejemplo de la imagen se van a procesar dos productos, por lo tanto se crea un formulario para cada uno, el uso en ambos es igual.</p>
+
+                        <br>
+
+                        <p>Despues de oprimir el boton de 'Ingresar' se procesara el pedido y enviara un mensaje de exito si no ha habido ningun error, si se ha cometido alguno enviara una notificacion.</p>
+
+
+                       
+                    </article>
+                </div>
+
+                <div id="poo-2" class="tabcontent">
+                    <article>
+                        <h3>¿Cómo ver los pedidos?</h3><br>
+                        <img src="{% static 'inventario/assets/manual/pedido/listar.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <br>
+                        <p>La interfaz para ver los pedidos funciona de la misma forma que las de <a href="/inventario/verManualDeUsuario/producto">productos</a> y <a href="/inventario/verManualDeUsuario/proveedor">proveedores</a>.</p>
+                        <p>Por lo tanto, vea alguno de esos dos modulos para mas informacion</p>
+
+                        <br>
+                        <p>Lo que si cambia, sin embargo, son las opciones en el boton de opciones:</p>
+                        
+                        <img src="{% static 'inventario/assets/manual/pedido/listar-opciones.png' %}" alt="telefono" style="width:20%;height:20%;">
+                        <p>
+                        Este es el boton de opciones despues de darle click, se puede ver una lista emergente con dos sub opciones, Editar/Ver proveedor y Eliminar proveedor, de los cuales se hablara despues.
+                        </p>
+
+                        <br>
+                        <p>En <b>'Ver pedido' </b>
+                        se accede a los detalles del pedido cuya fila corresponda el boton.</p>
+                        <br>
+
+                        <p>En <b>'Generar reporte(CSV)'</b> y <b>'Generar reporte(PDF)'</b> se pueden crear reportes de cada fila correspondiente al boton, en formato de hoja de calculo o PDF, respectivamente.</p>
+
+
+
+                    </article>
+                </div>
+
+                <div id="poo-3" class="tabcontent">
+                    <article>
+                        <h3>Que son los detalles de los pedidos?</h3><br>
+
+                        <br>
+                        <img src="{% static 'inventario/assets/manual/pedido/detalles.png' %}" alt="telefono" style="width:100%;height:100%;">
+                            <br>
+                            <br><p>Los detalles de los pedidos son aquellos datos de cada pedido, su identificador, los productos involucrados, el monto general, entre otros. Desde aqui se pueden ver todos esos datos.</p>
+                            <br>
+                            <p>Ademas, cuenta con tres botones.</p>
+                            <p><b>Volver a pedidos:</b> El cual nos devuelve a la lista anterior.</p>
+                            <br>
+                            <p><b>Boton de marcar pedido:</b> Si el pedido aun no se ha marcado, el boton se activara y podra ser pulsado, de lo contrario estara desactivado y dira <b>'El pedido ya ha sido recibido'</b>.</p>
+    
+                            <br>
+                            <p><b>Boton de generar PDF:</b> Genera un PDF del pedido actual.</p>
+
+                        </article>
+                </div>
+
+                <div id="poo-4" class="tabcontent">
+                    <article>
+
+                        <h3>Imprimir reportes</h3><br>
+        <img src="{% static 'inventario/assets/manual/pedido/descargar.png' %}" alt="telefono" style="width:50%;height:50%;">
+        <br>
+        <br>
+                        <p>Suponiendo que se le haya dado en la opcion de generar PDF o generar CSV, se mostrara una ventana indicando que quiere hacer con el archivo (imagen de arriba), el idioma de la misma dependera del idioma de su sistema operativo.
+                        </p>
+
+                        <p>El archivo, en caso de ser un PDF, deberia verse asi:
+                        </p>
+
+                        <br>
+        <img src="{% static 'inventario/assets/manual/pedido/elpdf.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <br>
+                        <br>
+                        <p>Si se ha descargado en formato de CSV, la apariencia del mismo variara de acuerdo al programa usado para abrirlo, por ejemplo, Calc o Excel.</p>
+
+                        <br>
+
+                        <br>
+                    </article>
+                </div>
+                {% include 'inventario/manual/comun/footer_incluido.html' %}
+            </div>
+
+             {% endblock %}

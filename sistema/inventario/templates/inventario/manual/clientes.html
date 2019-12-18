@@ -1,0 +1,35 @@
+{% extends "inventario/manual/comun/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+            <div id="contenido" class="abrir">
+                <header class="header" id="poo-header">
+                    <h1 class="style">Cliente</h1>
+                </header>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'poo-1')" id="defaultOpen">Resumen</button>
+                </div>
+
+                <div id="poo-1" class="tabcontent">
+                    <article>
+                        <h3>Resumen</h3><br>
+                        <img src="{% static 'inventario/assets/manual/cliente/resumen.png' %}" alt="telefono" style="width:100%;height:100%;">
+                        <p>Los campos y la logica del modulo de clientes es indentica al modulo de proveedores, por lo que si se sabe ingresar un proveedor, se sabra ingresar un cliente al sistema.</p>
+
+                        <br>
+
+                        <p>Para mas informacion, visite este enlace: <a href="/inventario/verManualDeUsuario/proveedor">Ingresar proveedor </a></p>
+
+                        <br>
+
+                        <br>
+                 
+                       
+                    </article>
+                </div>
+                {% include 'inventario/manual/comun/footer_incluido.html' %}
+            </div>
+
+             {% endblock %}

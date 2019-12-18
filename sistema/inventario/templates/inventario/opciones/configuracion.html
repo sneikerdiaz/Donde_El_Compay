@@ -1,0 +1,82 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+<article class="content forms-page">
+	    <div class="title-block">
+          <h3 class="title">Configuracion general</h3>
+          <p class="title-description">Llene cada uno de los elementos presentados a continuacion</p>
+        </div>
+<section class="section">
+    <div class="row sameheight-container">
+	<div class="col-md-12">
+
+		{% if messages %}
+        {% for message in messages %}
+		 <div class="card card-primary">
+            <div class="card-header"> 
+            	<div class="header-block">
+            		<em class="fa fa-check"></em>
+                        <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div>
+         {%endfor%}
+		{%endif%}
+
+
+		<div class="card card-block sameheight-item">
+			<form role="form" method="POST" onsubmit="return validarTodo('opciones')" enctype="multipart/form-data">
+			{% csrf_token %}
+
+
+
+				<div class="form-group">
+				<label for="{{ form.valor_iva.name }}">
+				{{form.valor_iva.label}}
+				</label>
+				{{form.valor_iva}}
+				</div>
+
+				<div class="form-group">
+				<label for="{{ form.mensaje_factura.name }}">
+				{{form.mensaje_factura.label}}
+				</label>
+				{{form.mensaje_factura}}
+				</div>
+
+				<div class="form-group">
+				<label for="{{ form.nombre_negocio.name }}">
+				{{form.nombre_negocio.label}}
+				</label>
+				{{form.nombre_negocio}}
+				</div>				
+
+				{% load static %}
+				<div class="form-group">
+				<label for="imagen-muestra">
+				Logo actual(Puede cambiarla abajo)
+				</label>
+					<div id="imagen-muestra">
+						<img src="{% static 'inventario/assets/logo/logo2.png' %}"> 
+					</div>
+				</div>	
+
+				<div class="form-group">
+					<div class="custom-file">
+					{{form.imagen}}
+					<label class="custom-file-label" for="customFile">Buscar archivo....</label>
+					</div>
+				</div>	
+
+
+
+		<div class="form-group">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+			</form>
+		</div>
+	</div>
+	</div>
+</section>
+</article>
+{% endblock %}
