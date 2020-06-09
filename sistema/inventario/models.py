@@ -28,7 +28,7 @@ class Usuario(AbstractUser):
 
 class Opciones(models.Model):
     #id
-    moneda = models.CharField(max_length=5, null=True)
+    moneda = models.CharField(max_length=20, null=True)
     valor_iva = models.IntegerField(unique=True)   
     nombre_negocio = models.CharField(max_length=25,null=True)
     mensaje_factura = models.TextField(null=True)

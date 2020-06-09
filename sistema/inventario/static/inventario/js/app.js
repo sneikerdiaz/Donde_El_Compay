@@ -1654,6 +1654,44 @@ function validarTodo(tipo)
 
 	}
 
+	if(tipo == 'opciones')
+	{
+		let moneda = document.getElementById('moneda')
+		let valor_iva = document.getElementById('valor_iva')	
+		let mensaje_factura = document.getElementById('mensaje_factura')
+		let nombre_negocio = document.getElementById('nombre_negocio')	
+
+		if( (isNaN(parseFloat(valor_iva.value)) ) )
+		{
+			error = true
+			mensaje += "<p class='" + claseErrores +"'>" +
+			 "-En el campo de IVA solo pueden ir digitos. </p>"			
+		}
+
+		if( (moneda.value.length) > 20 )
+		{
+			error = true
+			mensaje += "<p class='" + claseErrores +"'>" +
+			 "-El campo de moneda no puede ser mayor a 20 caracteres. </p>"			
+		}
+
+		if( (mensaje_factura.value.length) > 50 )
+		{
+			error = true
+			mensaje += "<p class='" + claseErrores +"'>" +
+			 "-El mensaje de la factura no puede ser mayor a 50 caracteres. </p>"			
+		}
+
+		if( (nombre_negocio.value.length) > 50 )
+		{
+			error = true
+			mensaje += "<p class='" + claseErrores +"'>" +
+			 "-El nombre del negocio no puede ser mayor a 50 caracteres. </p>"			
+		}
+
+
+	}
+
 		if(error)
 		{
 			alertify.set('notifier','position', 'top-right');

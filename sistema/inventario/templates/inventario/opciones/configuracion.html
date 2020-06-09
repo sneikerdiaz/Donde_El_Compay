@@ -28,6 +28,12 @@
 			<form role="form" method="POST" onsubmit="return validarTodo('opciones')" enctype="multipart/form-data">
 			{% csrf_token %}
 
+				<div class="form-group">
+				<label for="{{ form.moneda.name }}">
+				{{form.moneda.label}}
+				</label>
+				{{form.moneda}}
+				</div>
 
 
 				<div class="form-group">

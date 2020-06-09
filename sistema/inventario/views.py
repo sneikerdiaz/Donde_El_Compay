@@ -121,11 +121,13 @@ class Perfil(LoginRequiredMixin, View):
     def get(self, request, modo, p):
         if modo == 'editar':
             perf = Usuario.objects.get(id=p)
+            editandoSuperAdmin = False
 
             if p == 1:
                 if request.user.nivel != 2:
                     messages.error(request, 'No puede editar el perfil del administrador por no tener los permisos suficientes')
                     return HttpResponseRedirect('/inventario/perfil/ver/%s' % p)
+                editandoSuperAdmin = True
             else:
                 if request.user.is_superuser != True: 
                     messages.error(request, 'No puede cambiar el perfil por no tener los permisos suficientes')
@@ -141,8 +143,11 @@ class Perfil(LoginRequiredMixin, View):
 
                             return HttpResponseRedirect('/inventario/perfil/ver/%s' % p) 
 
-
-            form = UsuarioFormulario()
+            if editandoSuperAdmin:
+                form = UsuarioFormulario()
+                form.fields['level'].disabled = True
+            else:
+                form = UsuarioFormulario()
 
             #Me pregunto si habia una manera mas facil de hacer esto, solo necesitaba hacer que el formulario-
             #-apareciera lleno de una vez, pero arrojaba User already exists y no pasaba de form.is_valid()
@@ -164,6 +169,7 @@ class Perfil(LoginRequiredMixin, View):
             perf = Usuario.objects.get(id=p)
             if p == 1:
                 if request.user.nivel != 2:
+                   
                     messages.error(request, 'No puede cambiar la clave del administrador por no tener los permisos suficientes')
                     return HttpResponseRedirect('/inventario/perfil/ver/%s' % p)  
             else:
@@ -192,7 +198,7 @@ class Perfil(LoginRequiredMixin, View):
             perf = Usuario.objects.get(id=p)
             contexto = { 'perfil':perf }      
             contexto = complementarContexto(contexto,request.user)
-            print(perf.email)
+          
             return render(request,'inventario/perfil/verPerfil.html', contexto)
 
 
@@ -202,24 +208,27 @@ class Perfil(LoginRequiredMixin, View):
             # Crea una instancia del formulario y la llena con los datos:
             form = UsuarioFormulario(request.POST)
             # Revisa si es valido:
-            print(form.errors)
+            
             if form.is_valid():
+                perf = Usuario.objects.get(id=p)
                 # Procesa y asigna los datos con form.cleaned_data como se requiere
+                if p != 1:
+                    level = form.cleaned_data['level']        
+                    perf.nivel = level
+                    perf.is_superuser = level
+
                 username = form.cleaned_data['username']
                 first_name = form.cleaned_data['first_name']
                 last_name = form.cleaned_data['last_name']
                 email = form.cleaned_data['email']
-                level = form.cleaned_data['level']
 
-                perf = Usuario.objects.get(id=p)
                 perf.username = username
                 perf.first_name = first_name
                 perf.last_name = last_name
                 perf.email = email
-                perf.nivel = level
-                perf.is_superuser = level
-                perf.save()
 
+                perf.save()
+                
                 form = UsuarioFormulario()
                 messages.success(request, 'Actualizado exitosamente el perfil de ID %s.' % p)
                 request.session['perfilProcesado'] = True           
@@ -1521,6 +1530,7 @@ class ConfiguracionGeneral(LoginRequiredMixin, View):
         
         #Envia al usuario el formulario para que lo llene
 
+        form['moneda'].field.widget.attrs['value']  = conf.moneda
         form['valor_iva'].field.widget.attrs['value']  = conf.valor_iva
         form['mensaje_factura'].field.widget.attrs['value']  = conf.mensaje_factura
         form['nombre_negocio'].field.widget.attrs['value']  = conf.nombre_negocio
@@ -1536,13 +1546,19 @@ class ConfiguracionGeneral(LoginRequiredMixin, View):
 
         if form.is_valid():
             # Procesa y asigna los datos con form.cleaned_data como se requiere
+            moneda = form.cleaned_data['moneda']
             valor_iva = form.cleaned_data['valor_iva']
             mensaje_factura = form.cleaned_data['mensaje_factura']
             nombre_negocio = form.cleaned_data['nombre_negocio']
-            imagen = request.FILES['imagen']
+            imagen = request.FILES.get('imagen',False)
 
-            manejarArchivo(imagen,'inventario/static/inventario/assets/logo/logo2.png')
+            #Si se subio un logo se sobreescribira en la carpeta ubicada
+            #--en la siguiente ruta
+            if imagen:
+                manejarArchivo(imagen,'inventario/static/inventario/assets/logo/logo2.png')
+
             conf = Opciones.objects.get(id=1)
+            conf.moneda = moneda
             conf.valor_iva = valor_iva
             conf.mensaje_factura = mensaje_factura
             conf.nombre_negocio = nombre_negocio

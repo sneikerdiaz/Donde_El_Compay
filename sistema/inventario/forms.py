@@ -296,6 +296,7 @@ class UsuarioFormulario(forms.Form):
         )
 
     level =  forms.CharField(
+        required=False,
         label="Nivel de acceso",
         max_length=2,
         widget=forms.Select(choices=niveles,attrs={'placeholder': 'El nivel de acceso',
@@ -390,6 +391,14 @@ class ImportarBDDFormulario(forms.Form):
         )
 
 class OpcionesFormulario(forms.Form):
+    moneda = forms.CharField(
+        label = 'Moneda a emplear en el sistema',
+        max_length=20,
+        widget = forms.TextInput(
+        attrs={'placeholder': 'Inserte la abreviatura de la moneda que quiere usar (Ejemplo: $)',
+        'id':'moneda','class':'form-control'}),
+        )
+
     valor_iva = forms.DecimalField(
         label="Valor del IVA",
         min_value=0,widget=forms.NumberInput(
